@@ -1,13 +1,12 @@
 
-import results from '../src/mock/results.json'
-
+import { useMovies } from "../hooks/useMovies";
 
 function MoviesList({ movies }) {
   return (
     <ul className='movies'>
       {movies.map(item => (
         <li className='movie' key={item.imdbID}>
-          <h4>{item.Title}</h4>
+          <h5>{item.Title}</h5>
           <p>{item.Year}</p>
           <img src={item.Poster} alt={item.Title} />
         </li>
@@ -20,10 +19,9 @@ function NoMovies() {
   return <p>Movie not found!</p>
 }
 
-export default function Movies() {
-  const movies = results.Search;
+export default function Movies({ movies }) {
+
   const hasMovies = movies?.length > 0;
-  return (
-    hasMovies ? <MoviesList movies={movies} /> : <NoMovies />
-  )
+  return hasMovies ? <MoviesList movies={movies} /> : <NoMovies />
+
 }

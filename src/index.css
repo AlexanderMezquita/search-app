@@ -22,6 +22,11 @@ main {
   gap: 10px;
 }
 
+.error {
+  color: crimson;
+
+}
+
 .movies {
   list-style-type: none;
   margin: 20px;
@@ -40,7 +45,8 @@ main {
   border-radius: 10px;
 }
 
-.movie h4,
+.movie h5,
 .movie p {
+  font-weight: bolder;
   margin: 0;
 }
