@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -12,11 +12,15 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    getMovies();
+    getMovies(search);
   }
   const handleChange = (value) => {
     updateSearch(value);
   }
+
+  // useEffect(() => {
+  //   console.log('getmovies render')
+  // }, [getMovies])
 
   return (
     <div className="page">
