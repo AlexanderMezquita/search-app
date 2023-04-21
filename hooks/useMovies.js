@@ -1,8 +1,4 @@
 import { useRef, useState, useMemo } from 'react'
-import results from '../src/mockData/results.json'
-import noresults from  "../src/mockData/no-results.json"
-import { useSearch } from './useSearch';
-
 
 export function useMovies({search, page}) {
     const api_key = '13c913a1';
@@ -15,6 +11,7 @@ export function useMovies({search, page}) {
         if(search === null) return
         if(prevSearch.current === search && prevPage.current === page ) return
         try{
+            // alert(page)
             setLoading(true)
             prevSearch.current= search
             prevPage.current= page

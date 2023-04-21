@@ -17,7 +17,7 @@ function MoviesList({ movies }) {
 }
 
 function NoMovies() {
-  return <p>Movie not found!</p>
+  return <p style={{ textAlign: "center" }}>Movie not found!</p>
 }
 
 export default function Movies({ movies }) {

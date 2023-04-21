@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useMovies } from "./useMovies";
 
 export function useSearch() {
   const [search, setSearch] = useState("");
   const [error, setError] = useState("");
+  const [page, setPage] = useState(1)
+  const prevSearch = useRef(search)  
+
 
   const updateSearch = (value) => {
     if (value.startsWith(" ")) return;
@@ -25,5 +28,10 @@ export function useSearch() {
     setError(null);
   };
 
-  return { error, search, updateSearch };
+  const updatePage = (value) => {
+    setPage(value)
+    
+  }
+
+  return { error, search , page, updateSearch, updatePage };
 }
