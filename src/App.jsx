@@ -8,14 +8,20 @@ import { useMovies } from '../hooks/useMovies'
 
 function App() {
   const { error, search, updateSearch } = useSearch()
-  const { getMovies, movies, loading } = useMovies(search);
+  const [page, setPage] = useState(1)
+  const { getMovies, movies, loading } = useMovies({ search, page });
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    getMovies(search);
+    getMovies({ search, page });
   }
   const handleChange = (value) => {
     updateSearch(value);
+  }
+
+  const handlePage = () => {
+    setPage(page + 1)
+    getMovies({ search, page })
   }
 
   // useEffect(() => {
@@ -27,11 +33,12 @@ function App() {
       <header>
         <h1>Movie Searcher</h1>
         <p className='error'>{error ? error : ""}</p>
-
+        <button onClick={() => handlePage()}>page+</button>
         <form className='form' onSubmit={handleSubmit}>
-          <input name='search' onChange={(e) => handleChange(e.target.value)} value={search} placeholder='Avengers, Matrix, Toy Story...' style={{ border: '1px solid transparent', borderColor: error ? "red" : "transparent" }} />
+          <input name='search' autoComplete='off' onChange={(e) => handleChange(e.target.value)} value={search} placeholder='Avengers, Matrix, Toy Story...' style={{ border: '1px solid transparent', borderColor: error ? "red" : "transparent" }} />
           <button type='submit'>Submit</button>
         </form>
+
       </header>
       <main>
         {loading ? <p>Loading...</p> : <Movies movies={movies} />

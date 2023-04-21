@@ -1,28 +1,29 @@
-import { useState } from "react"
+import { useState } from "react";
+import { useMovies } from "./useMovies";
 
 export function useSearch() {
-  const [search, setSearch] = useState('')
-  const [error, setError] = useState('')
-  const updateSearch = (value) => {
-    if (value.startsWith(' ')) return
-    setSearch(value)
+  const [search, setSearch] = useState("");
+  const [error, setError] = useState("");
 
-    if (value === '') {
-      setError('The input cannot be empy')
-      return
+  const updateSearch = (value) => {
+    if (value.startsWith(" ")) return;
+    setSearch(value);
+    if (value === "") {
+      setError("The input cannot be empy");
+      return;
     }
 
     if (value.length < 3) {
-      setError("The search requires minimun 3 characters")
-      return
+      setError("The search requires minimun 3 characters");
+      return;
     }
 
     if (value.length > 25) {
-      setError("The search is too long")
-      return
+      setError("The search is too long");
+      return;
     }
-    setError(null)
-  }
+    setError(null);
+  };
 
-  return { error, search, updateSearch }
+  return { error, search, updateSearch };
 }
