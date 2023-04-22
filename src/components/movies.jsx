@@ -1,7 +1,3 @@
-
-import { useMovies } from "../hooks/useMovies";
-import { useSearch } from "../hooks/useSearch";
-
 function MoviesList({ movies }) {
   return (
     <ul className='movies'>

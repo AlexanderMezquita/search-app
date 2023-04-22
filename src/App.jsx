@@ -13,18 +13,27 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault()
     if (error) return
-
+    if (page != 1) {
+      updatePage(1)
+    }
     getMovies({ search, page });
-    // updatePage(1)
-
   }
   const handleChange = (value) => {
     updateSearch(value);
   }
 
-  const handlePage = (page) => {
+  const addPage = (page) => {
     if (error) return
     const newPage = page + 1
+    updatePage(newPage)
+    getMovies({ search, page: newPage })
+  }
+
+
+  const substractPage = (page) => {
+    if (error) return
+    if (page === 1) return
+    const newPage = page - 1
     updatePage(newPage)
     getMovies({ search, page: newPage })
   }
@@ -48,7 +57,9 @@ function App() {
         </form>
         <p className='error'>{error ? error : ""}</p>
         <div className='pageButton'>
-          <button onClick={() => handlePage(page)} disabled={!movies?.length > 0}>{page}+</button>
+          <button onClick={() => substractPage(page)} disabled={!movies?.length > 0}>{`<`}</button>
+          <button onClick={() => addPage(page)} disabled={!movies?.length > 0}>{page}+</button>
+
         </div>
         {loading ? <p style={{ textAlign: "center" }}>Loading...</p> :
           <>

@@ -11,7 +11,6 @@ export function useMovies({search, page}) {
         if(search === null) return
         if(prevSearch.current === search && prevPage.current === page ) return
         try{
-            // alert(page)
             setLoading(true)
             prevSearch.current= search
             prevPage.current= page
