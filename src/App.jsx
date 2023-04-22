@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import Movies from '../components/movies'
-import { useSearch } from '../hooks/useSearch'
-import { useMovies } from '../hooks/useMovies'
+import Movies from './components/movies'
+import { useSearch } from './hooks/useSearch'
+import { useMovies } from './hooks/useMovies'
 
 function App() {
   const { error, search, updateSearch, page, updatePage } = useSearch()
