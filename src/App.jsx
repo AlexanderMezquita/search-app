@@ -13,10 +13,9 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault()
     if (error) return
-    if (page != 1) {
-      updatePage(1)
-    }
-    getMovies({ search, page });
+    const defaultPage = 1;
+    updatePage(defaultPage)
+    getMovies({ search, page: defaultPage });
   }
   const handleChange = (value) => {
     updateSearch(value);
